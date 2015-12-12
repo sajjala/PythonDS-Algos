@@ -1,4 +1,3 @@
-
 class Node:
     """ Node Class
         Basic unit of LinkedList
@@ -37,6 +36,34 @@ class LinkedList:
         else:
             self.tail.setNext(new_node)
             self.tail = new_node
+
+    def reverseListIterative(self):
+        if(self.head is None or self.head.next is None):
+            return self.head
+        
+        unrev_head, rev_head, curr_node= self.head, None, None
+        while(unrev_head is not None):
+            rev_head = curr_node
+            curr_node = unrev_head
+            unrev_head = unrev_head.getNext()
+            curr_node.setNext(rev_head)
+
+        rev_head = curr_node
+
+        return rev_head
+
+    def reverseListRecursive(self, head):
+        if(head is None or head.next is None):
+            return head
+
+        next_node = head.getNext()
+        head.setNext(None)
+
+        rev_list = self.reverseListRecursive(next_node)
+        next_node.next = head
+        
+        import pdb; pdb.set_trace()
+        return rev_list
 
     def getSize(self):
         current = self.head
