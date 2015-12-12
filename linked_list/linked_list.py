@@ -61,8 +61,7 @@ class LinkedList:
 
         rev_list = self.reverseListRecursive(next_node)
         next_node.next = head
-        
-        import pdb; pdb.set_trace()
+
         return rev_list
 
     def getSize(self):
